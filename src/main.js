@@ -15,7 +15,7 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
 directionalLight.position.set(0, 1, -2);
 scene.add(directionalLight);
 
-const renderer = new THREE.WebGLRenderer({canvas: document.getElementById("canvas")});
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById("canvas"), antialias: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const controls = new OrbitControls(camera, renderer.domElement);
