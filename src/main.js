@@ -15,9 +15,8 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
 directionalLight.position.set(0, 1, -2);
 scene.add(directionalLight);
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById("canvas")});
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -32,7 +31,7 @@ let animations = {};
 let interactableMeshes = [];
 
 const loader = new GLTFLoader();
-loader.load('../public/piano.glb', function (gltf) {
+loader.load('../piano.glb', function (gltf) {
   scene.add(gltf.scene);
 
   mixer = new THREE.AnimationMixer(gltf.scene);
@@ -85,7 +84,7 @@ function animate() {
 
 function startSound(note) {
   note = note.replace("#", "Sharp");
-  const audio = new Audio(`../public/sounds/${note}.wav`);
+  const audio = new Audio(`../sounds/${note}.wav`);
   audio.play();
 }
 
