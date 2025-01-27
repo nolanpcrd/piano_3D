@@ -67,7 +67,7 @@ function onMouseClick(event) {
       const animationDuration = animation.getClip().duration * 1400;
       setTimeout(() => {
         animation.stop();
-      }, animationDuration);
+      }, 350);
     }
   }
 }
