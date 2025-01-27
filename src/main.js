@@ -63,23 +63,25 @@ function onMouseClick(event) {
     if (animation) {
       animation.reset().play();
       startSound(clickedObject.name);
-    }
 
-    setTimeout(() => {
-      animation.stop();
-    }, 700);
+      const animationDuration = animation.getClip().duration * 1400;
+      setTimeout(() => {
+        animation.stop();
+      }, animationDuration);
+    }
   }
 }
+
 
 window.addEventListener('click', onMouseClick);
 
 function animate() {
-  requestAnimationFrame(animate);
   if (mixer) {
     mixer.update(0.01);
   }
   controls.update();
   renderer.render(scene, camera);
+  requestAnimationFrame(animate);
 }
 
 function startSound(note) {
